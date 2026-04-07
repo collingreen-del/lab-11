@@ -1,4 +1,4 @@
-module ring_counter (
+module Ring_Counter (
     input clk,
     input rst,
     output [2:0] state
