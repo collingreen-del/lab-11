@@ -4,23 +4,36 @@ module ring_counter (
     output [2:0] state
 );
 
-    
-    t_ff ff0 (
-        .clk(clk),
-        .d(state[2]), 
-        .q(state[0])
-    );
+wire [2:0] t_input;
+wire w0, w1, w2;
 
-    t_ff ff1 (
-        .clk(clk),
-        .d(state[0]), 
-        .q(state[1])
-    );
+/* ring toggle logic */
 
-    t_ff ff2 (
-        .clk(clk),
-        .d(state[1]), 
-        .q(state[2])
-    );
+assign t_input[0] = state[2] ^ state[0];
+assign t_input[1] = state[0] ^ state[1];
+assign t_input[2] = state[1] ^ state[2];
+
+/* T flip flops */
+
+t_ff stage0 (
+    .clk(clk),
+    .t(t_input[0]),
+    .q(state[0]),
+    .q_wire(w0)
+);
+
+t_ff stage1 (
+    .clk(clk),
+    .t(t_input[1]),
+    .q(state[1]),
+    .q_wire(w1)
+);
+
+t_ff stage2 (
+    .clk(clk),
+    .t(t_input[2]),
+    .q(state[2]),
+    .q_wire(w2)
+);
 
 endmodule
