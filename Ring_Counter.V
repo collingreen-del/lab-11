@@ -7,7 +7,7 @@ module ring_counter (
 wire [2:0] t_input;
 wire w0, w1, w2;
 
-/* ring toggle logic */
+
 
 assign t_input[0] = state[2] ^ state[0];
 assign t_input[1] = state[0] ^ state[1];
