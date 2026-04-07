@@ -5,19 +5,19 @@ module ring_counter (
 );
 
     
-    d_ff ff0 (
+    t_ff ff0 (
         .clk(clk),
         .d(state[2]), 
         .q(state[0])
     );
 
-    d_ff ff1 (
+    t_ff ff1 (
         .clk(clk),
         .d(state[0]), 
         .q(state[1])
     );
 
-    d_ff ff2 (
+    t_ff ff2 (
         .clk(clk),
         .d(state[1]), 
         .q(state[2])
