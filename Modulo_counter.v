@@ -16,16 +16,16 @@ assign d2 = q2 ^ (q1 & q0);
 
 /* detect when state = 6 */
 
-wire is_six;
-assign is_six = q2 & q1 & ~q0;
+wire is_five;
+assign is_five = q2 & ~q1 & q0;
 
 /* reset next state when reaching 6 */
 
 wire nd0, nd1, nd2;
 
-assign nd0 = is_six ? 1'b0 : d0;
-assign nd1 = is_six ? 1'b0 : d1;
-assign nd2 = is_six ? 1'b0 : d2;
+assign nd0 = is_five ? 1'b0 : d0;
+assign nd1 = is_five ? 1'b0 : d1;
+assign nd2 = is_five ? 1'b0 : d2;
 
 /* instantiate DFFs */
 
@@ -40,7 +40,7 @@ assign state = {q2,q1,q0};
 wire out_q;
 wire out_d;
 
-assign out_d = is_six ^ out_q;
+assign out_d = is_five ^ out_q;
 
 DFF ff_out(clk, rst, out_d, out_q);
 
