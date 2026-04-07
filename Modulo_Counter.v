@@ -1,4 +1,4 @@
-module modulo_counter(
+module Modulo_Counter(
     input clk,
     input rst,
     output [2:0] state,
