@@ -3,7 +3,7 @@ module Ripple_Counter (
     input rst,
     output [2:0] state
 
-
+);
 
 
 
