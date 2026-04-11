@@ -14,6 +14,7 @@ In this lab, we learned how to make clock dividers from two types of counters.
 ## Names
 
 ## Summary
+We used two different types of counters (modulo and ring, called ripple in our files) as well as prior D and T flip flips to make clock dividers. 
 
 ## Lab Questions
 
@@ -26,4 +27,4 @@ a modulo n-counter divides clock frequency by the amount of clock pulses, N, to 
 Ring counter output goes to all 1's due to their flip-flops starting in an undefined state. The FPGA board will recognize the start as undefined unless given a specific reset state. With ring counter's output needing a singular 1 to circulate throught the bits, having the wrong reset state can cause the board logic to propagate the starting value of the flip flops, causing a potential state of 1111.
 
 ### 3 - What width of ring counter would you use to get to an output of ~1KHz?
-
+It depends on the clock frequency; the width would be about N = clock frequency/1000.
